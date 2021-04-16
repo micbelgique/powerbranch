@@ -1,0 +1,28 @@
+.example-form {
+
+    width: 100%;
+    text-align: center;
+  }
+  
+  .example-full-width {
+    width: 50%;
+  }
+  @media (min-width: 1075px) {
+    .example-card {
+      max-width: 60%;
+      margin: auto;
+    }
+  }
+  @media (max-width: 1075px) {
+    .example-card {
+       width: 100% !important;
+       margin: auto;
+    }
+ }
+  .example {
+    margin: auto;
+  }
+
+  a {
+    color: white;
+  }

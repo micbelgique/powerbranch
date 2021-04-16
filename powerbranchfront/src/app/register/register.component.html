@@ -1,0 +1,43 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Créer ton compte:</mat-card-title>
+  </mat-card-header>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                <mat-form-field class="input-full">
+                  <mat-label>Username</mat-label>
+                  <input matInput [(ngModel)]="this.username"
+                         placeholder="Ex. thelittlewozniak">
+                  <mat-hint>Enter your username here</mat-hint>
+                </mat-form-field>
+            </mat-list-item>
+            <mat-list-item></mat-list-item>
+            <mat-list-item role="listitem">
+                <mat-form-field class="input-full">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" [(ngModel)]="this.password"
+                           placeholder="Enter your password">
+                    <mat-hint>Enter your password here</mat-hint>
+                  </mat-form-field>
+            </mat-list-item>
+            <mat-list-item></mat-list-item>
+            <mat-list-item role="listitem">
+                <mat-form-field class="input-full">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" [(ngModel)]="this.email"
+                           placeholder="Enter your email">
+                    <mat-hint>Enter your email here</mat-hint>
+                  </mat-form-field>
+            </mat-list-item>
+            <mat-list-item></mat-list-item>
+            <mat-list-item>
+                <button mat-raised-button color="primary" (click)='register()'>Créer ton compte</button>
+                
+            </mat-list-item>
+            <mat-list-item>
+              <button mat-raised-button color="primary" [routerLink]="['/login']" routerLinkActive="router-link-active" >Déjà un compte? Connecte toi ici</button>
+            </mat-list-item>
+          </mat-list> 
+    </mat-card-content>
+  </mat-card>

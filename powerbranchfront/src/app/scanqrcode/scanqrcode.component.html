@@ -1,0 +1,109 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Enregistre l'évènement que tu as suivi:</mat-card-title>
+      </mat-card-header>
+
+    <mat-form-field appearance="standard" class="example-full-width">
+        <mat-label>Redeem an event code:</mat-label>
+        <input [(ngModel)]="this.code" matInput name="code">
+    </mat-form-field>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)='redeem()'>Redeem the code</button>
+    </mat-card-actions>
+</mat-card>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Envie de rejoindre le slack?</mat-card-title>
+      </mat-card-header>
+      <p>Envie de rejoindre le slack ou tout simplement le lancer dans votre navigateur?</p>
+      <p> Il suffit de cliquer:</p>
+      <mat-card-actions>
+        <a mat-raised-button color="primary" href="https://join.slack.com/t/micbelgique/shared_invite/zt-44y4prlc-Y88CBdww~X7CqiS_tkKGTw">Ici</a>
+    </mat-card-actions>
+</mat-card>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Vos infos:</mat-card-title>
+      </mat-card-header>
+      <mat-list>
+          <mat-list-item>
+              username: {{user.userName}}
+          </mat-list-item>
+          <mat-list-item>
+              email: {{user.email}}
+          </mat-list-item>
+          <mat-list-item>
+              nombre d'events suivis depuis le début: {{user?.events?.length}}
+          </mat-list-item>
+      </mat-list>
+      <h2>Les évènements:</h2>
+      <table mat-table [dataSource]="user?.events" style="width: 100%;">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Titre </th>
+          <td mat-cell *matCellDef="let element"> {{element.event.title}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="theme">
+          <th mat-header-cell *matHeaderCellDef> Thème </th>
+          <td mat-cell *matCellDef="let element"> {{element.event.theme}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="checked">
+          <th mat-header-cell *matHeaderCellDef> chécké </th>
+          <td mat-cell *matCellDef="let element"> {{element.createdDate | date:'medium'}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</mat-card>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Chat twitch:</mat-card-title>
+  </mat-card-header>
+  <iframe style="height: 300px;"
+    scrolling="<scrolling>"
+    src="https://www.twitch.tv/embed/micbelgique/chat?parent=www.powerbranch.tech"
+    width="100%">
+</iframe>
+</mat-card>
+<mat-card class="event-card">
+  <mat-card-header>
+      <mat-card-title>Prochains évènements:</mat-card-title>
+    </mat-card-header>
+    <table mat-table [dataSource]="events" style="width: 100%;">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Titre </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="theme">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.servertime | date:'medium'}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="checked">
+        <th mat-header-cell *matHeaderCellDef> Infos </th>
+        <td mat-cell *matCellDef="let element">
+          <a [href]="element.event_url">Inscrivez vous ici</a>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>

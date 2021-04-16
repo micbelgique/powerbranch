@@ -1,0 +1,57 @@
+<mat-card class="example-card" *ngIf="!this.askingForPasswodReset">
+  <mat-card-header>
+    <mat-card-title>Connecte-toi!</mat-card-title>
+  </mat-card-header>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                <mat-form-field class="input-full">
+                  <mat-label>Username</mat-label>
+                  <input matInput [(ngModel)]="this.username"
+                         placeholder="Ex. thelittlewozniak">
+                  <mat-hint>Entre ton username ici</mat-hint>
+                </mat-form-field>
+            </mat-list-item>
+            <mat-list-item></mat-list-item>
+            <mat-list-item role="listitem">
+                <mat-form-field class="input-full">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput type="password" [(ngModel)]="this.password"
+                           placeholder="Entre ton mot de passe">
+                    <mat-hint>Entre ton mot de passe ici</mat-hint>
+                  </mat-form-field>
+            </mat-list-item>
+            <mat-list-item></mat-list-item>
+            <mat-list-item>
+                <button mat-raised-button color="primary" (click)='connect()'>Connect</button>
+            </mat-list-item>
+            <mat-list-item>
+              <button mat-raised-button color="primary" [routerLink]="['/register']" routerLinkActive="router-link-active">Créer un compte</button>
+          </mat-list-item>
+          <mat-list-item>
+            <button mat-raised-button color="primary" routerLinkActive="router-link-active" (click)="this.ChangePasswordShow()">Mot de passe oublié?</button>
+        </mat-list-item>
+          </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="example-card" *ngIf="this.askingForPasswodReset">
+    <mat-card-header>
+      <mat-card-title>Récupère ton compte:</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                <mat-form-field class="input-full">
+                  <mat-label>Email address:</mat-label>
+                  <input matInput [(ngModel)]="this.email"
+                         placeholder="Ex. nathan@mic-belgique.be">
+                  <mat-hint>Entre ton mail ici</mat-hint>
+                </mat-form-field>
+            </mat-list-item>
+            <mat-list-item></mat-list-item>
+            <mat-list-item>
+              <button mat-raised-button color="primary" (click)='this.changePasswordEmail()'>Envoyer un email de récupération</button>
+          </mat-list-item>
+          </mat-list>
+    </mat-card-content>
+  </mat-card>

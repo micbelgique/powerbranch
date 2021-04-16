@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+    <a routerLink="/">Power Branch</a>
+      <span class="spacer"></span>
+      <a *ngIf="!this.isConnected" routerLink="/register">Créer un compte</a>
+      <a *ngIf="!this.isConnected" routerLink="/login">Login</a>
+      <a *ngIf="this.isConnected" (click)="disconnect()">Déconnecte toi</a>
+    </mat-toolbar-row>
+    </mat-toolbar>
+<router-outlet></router-outlet>
+<notifier-container></notifier-container>
